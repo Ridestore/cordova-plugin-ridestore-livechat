@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="cordova-plugin-ridestore-livechat" version="1.0.0"
+        xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>RSLiveChat</name>
+    <description>
+        Provides LiveChat client native API for Cordova, iOS only at the moment
+    </description>
+    <repo>https://github.com/Ridestore/cordova-plugin-ridestore-livechat.git</repo>
+
+    <js-module name="RSLiveChat" src="www/RSLiveChat.js">
+        <clobbers target="cordova.plugins.RSLiveChat" />
+    </js-module>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="RSLiveChat">
+                <param name="ios-package" value="RSLiveChat" />
+            </feature>
+        </config-file>
+        <source-file src="src/ios/RSLiveChat.swift" />
+        <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
+    </platform>
+    <platform name="osx">
+        <config-file target="config.xml" parent="/*">
+            <feature name="RSLiveChat">
+                <param name="ios-package" value="RSLiveChat" />
+            </feature>
+        </config-file>
+        <source-file src="src/ios/RSLiveChat.swift" />
+        <dependency id="cordova-plugin-add-swift-support" version="2.0.2"/>
+    </platform>
+</plugin>
