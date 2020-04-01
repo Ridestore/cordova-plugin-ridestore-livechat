@@ -47,7 +47,7 @@ if (!LiveChat.isChatPresented) {
     LiveChat.licenseId = command.arguments[0] as? String ?? "";
     LiveChat.groupId = command.arguments[1] as? String ?? "";
     var pluginResult = CDVPluginResult (status: CDVCommandStatus_ERROR, messageAs: "Configuration failed");
-    if LiveChat.licenseId.characters.count > 0 {
+    if (LiveChat.licenseId?.count)! > 0 {
         // LiveChat.delegate = self;
         // UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge, .carPlay ]) {
         //     (granted, error) in
@@ -63,21 +63,21 @@ if (!LiveChat.isChatPresented) {
   @objc(updateUserName:)
   func updateUserName(command: CDVInvokedUrlCommand) {
     LiveChat.name = command.arguments[0] as? String ?? "";
-    var pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "User name update succeeded");
+    let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "User name update succeeded");
     self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
   }
 
   @objc(updateUserEmail:)
   func updateUserEmail(command: CDVInvokedUrlCommand) {
     LiveChat.email = command.arguments[0] as? String ?? "";
-    var pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "User email update succeeded");
+    let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "User email update succeeded");
     self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
   }
 
   @objc(displayMessenger:)
   func displayMessenger(command: CDVInvokedUrlCommand) {
     LiveChat.presentChat();
-    var pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "displayMessenger succeeded");
+    let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "displayMessenger succeeded");
     self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
   }
 
