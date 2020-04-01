@@ -60,6 +60,20 @@ if (!LiveChat.isChatPresented) {
     self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
   }
 
+  @objc(updateUserName:)
+  func updateUserName(command: CDVInvokedUrlCommand) {
+    LiveChat.name = command.arguments[0] as? String ?? "";
+    var pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "User name update succeeded");
+    self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
+  }
+
+  @objc(updateUserEmail:)
+  func updateUserEmail(command: CDVInvokedUrlCommand) {
+    LiveChat.email = command.arguments[0] as? String ?? "";
+    var pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "User email update succeeded");
+    self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
+  }
+
   @objc(displayMessenger:)
   func displayMessenger(command: CDVInvokedUrlCommand) {
     LiveChat.presentChat();
