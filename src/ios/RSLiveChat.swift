@@ -46,17 +46,18 @@ if (!LiveChat.isChatPresented) {
   func loadLiveChatApi(command: CDVInvokedUrlCommand) {
     LiveChat.licenseId = command.arguments[0] as? String ?? "";
     LiveChat.groupId = command.arguments[1] as? String ?? "";
-    var pluginResult = CDVPluginResult (status: CDVCommandStatus_ERROR, messageAs: "Configuration failed");
-    if (LiveChat.licenseId?.count)! > 0 {
-        // LiveChat.delegate = self;
-        // UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge, .carPlay ]) {
-        //     (granted, error) in
-        //     print("Permission granted: \(granted)")
-        //     guard granted else { return }
-        //     self.getNotificationSettings()
-        // }
-        pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "Configuration succeeded");
-    }
+    let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "Configuration succeeded");
+    // var pluginResult = CDVPluginResult (status: CDVCommandStatus_ERROR, messageAs: "Configuration failed");
+    // if (LiveChat.licenseId?.count)! > 0 {
+    //     // LiveChat.delegate = self;
+    //     // UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge, .carPlay ]) {
+    //     //     (granted, error) in
+    //     //     print("Permission granted: \(granted)")
+    //     //     guard granted else { return }
+    //     //     self.getNotificationSettings()
+    //     // }
+    //     pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "Configuration succeeded");
+    // }
     self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
   }
 
@@ -77,7 +78,7 @@ if (!LiveChat.isChatPresented) {
   @objc(displayMessenger:)
   func displayMessenger(command: CDVInvokedUrlCommand) {
     LiveChat.presentChat();
-    let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "displayMessenger succeeded");
+    let pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "displayMessenger succeeded, licenseId: " + (LiveChat.licenseId ?? ""));
     self.commandDelegate!.send(pluginResult, callbackId: command.callbackId);
   }
 
