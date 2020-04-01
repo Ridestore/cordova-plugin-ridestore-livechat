@@ -47,7 +47,7 @@ if (!LiveChat.isChatPresented) {
     LiveChat.licenseId = command.arguments[0] as? String ?? "";
     LiveChat.groupId = command.arguments[1] as? String ?? "";
     var pluginResult = CDVPluginResult (status: CDVCommandStatus_ERROR, messageAs: "Configuration failed");
-    if msg.characters.count > 0 {
+    if LiveChat.licenseId.characters.count > 0 {
         // LiveChat.delegate = self;
         // UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge, .carPlay ]) {
         //     (granted, error) in
