@@ -1,6 +1,6 @@
 {
     "name": "cordova-plugin-ridestore-livechat",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Provides LiveChat client native API for Cordova, iOS only at the moment",
     "repository": {
       "type": "git",
